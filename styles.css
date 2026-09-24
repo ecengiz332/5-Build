@@ -1,4 +1,4 @@
-/* CSS by Christina Carrasquilla, iteration by */
+/* CSS by Christina Carrasquilla, iteration by Esra Cengiz */
 
 /* ===== Color Palette ===== 
 
@@ -12,14 +12,25 @@
 */
 
 /* ===== GLOBAL (Base) Styles ===== */
+*{
+    box-sizing:border-box;
+}
+
 body {
     font-family: Helvetica, Arial, sans-serif;
     margin: 0;
-    background-color: #0f172a;
+    background-color: #131827;
     color: #e2e8f0;
-    min-width:500px;
-    display:grid;
-    grid-template-columns:1fr;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+header,
+nav,
+main,
+aside,
+footer {
+    width: 100%;
 }
 
 header {
@@ -45,15 +56,17 @@ nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 nav a {
     color: #e2e8f0;
     text-decoration: none;
-    padding: 0.5rem;
+    padding: 0.75rem 1rem;
     display: block;
     border-left: 4px solid #38bdf8;
-    margin: .25rem;
+    margin: 0.25rem;
 }
 
 nav a:hover {
@@ -65,47 +78,94 @@ main {
 }
 
 img {
-    width:100%;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem 0;
 }
 
-#screenings, #workshops, #collaborations {
+.card-row {
+    display: block;
+}
+#screenings,
+#workshops,
+#collaborations {
     background-color: #1e293b;
-    padding: 1rem;
-    padding: 1rem;
+    padding: 1.5rem;
     border-left: 4px solid #38bdf8;
+    margin-bottom: 1.5rem; 
 }
 
 aside {
     background-color: #38bdf8;
     color: #1e293b;
-    padding: 1rem;
-    padding: 1rem;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 a {
-    display:block;
-    background-color:#020617;
-    color:#e2e8f0;
-    padding:1rem 2rem;
-    text-decoration:none;
-    text-align:center;
+    display: block;
+    background-color: #020617;
+    color: #e2e8f0;
+    padding: 1.5rem 2rem;
+    text-decoration: none;
+    text-align: center;
 }
+
 a:hover {
-    color:#020617;
+    color: #38bdf8;
     background-color:#e2e8f0;
 }
 
 footer {
-    background-color: #020617;
+    background-color: #1e293b;
     text-align: center;
-    padding: 1rem;
-    margin-top: 1rem;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
 }
 
-/* ===== Media Query (Medium) ===== */
-/* write a media query for a screen with at least 800px */
-/* change the body's grid template to 1fr 300px */
-/* target the header, nav, and footer and style their grid-column to 1/-1 */
-/* target the nav and display it flex, spaceed around */
-/* target the .card-row to display flex */
-/* target the sections in .card-row witha width for 30% */
+/* ===== MEDIA QUERIES (MEDIUM AND LARGE SCREENS) ===== */
+
+@media screen and (min-width: 800px) {
+    body {
+        grid-template-columns: 1fr 300px;
+    }
+
+    header,
+    nav,
+    footer {
+        grid-column: 1 / -1;
+    }
+
+    nav ul {
+        flex-direction: row;
+        justify-content: space-around; 
+        align-items: center;
+    }
+
+     nav a {
+        border-left: none; 
+        border-bottom: 4px solid #38dbf8;
+        margin: 0;
+     }
+
+    .card-row {
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+    }
+
+    .card-row section {
+        width: 30%;
+    }
+
+    main {
+        grid-column: 1;
+    }
+
+    aside {
+        background-color: #38bdf8;
+        grid-column: 2;
+        margin-top: 0;
+    }
+}
